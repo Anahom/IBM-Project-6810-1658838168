@@ -27,4 +27,5 @@ def admin():
         return render_template("chance.html",p=str(ceil(xx[0]*100))+"%")
     return render_template("nochance.html")
 if __name__ == '__main__':
-    app.run(debug = False, port=4000)
+    # app.run(debug = False, port=4000)
+    app.run(host='0.0.0.0', port=4000, debug=False)
