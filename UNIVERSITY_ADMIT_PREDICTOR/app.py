@@ -2,7 +2,7 @@ import pickle
 from flask import Flask , request, render_template
 from math import ceil
 app = Flask(__name__)
-model = pickle.load(open("model.pkl","rb"))
+model = pickle.load(open("university.pkl","rb"))
 
 @app.route('/')
 def index():
