@@ -1,78 +1,109 @@
-1<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head >
+<head>
 	<title>University Admission Predictor</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: 'Raleway', sans-serif;
+		}
+		.container {
+			max-width: 800px;
+			margin: 40px auto;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+		.header {
+			background-color: #3d0c02;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+			border-radius: 10px 10px 0 0;
+		}
+		.header h1 {
+			font-size: 36px;
+			margin-bottom: 10px;
+		}
+		.header p {
+			font-size: 18px;
+		}
+		.form-container {
+			padding: 20px;
+		}
+		.form-container form {
+			max-width: 500px;
+			margin: 0 auto;
+		}
+		.form-container label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		.form-container input[type="text"], .form-container select {
+			width: 100%;
+			height: 40px;
+			margin-bottom: 20px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		.form-container input[type="text"]:focus, .form-container select:focus {
+			border-color: #aaa;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+		}
+		.form-container input[type="submit"] {
+			background-color: #3d0c02;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.form-container input[type="submit"]:hover {
+			background-color: #4c0c02;
+		}
+		::placeholder {
+			color: #ccc;
+		}
+	</style>
 </head>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@500&display=swap" rel="stylesheet">
-<style type="text/css">
-
-
-	h1,h2{
-		font-family: 'Raleway', sans-serif;
-		color: white;
-
-	}
-
-	h1,h2,form,p,b{
-		text-align: center;
-		color: white;
-
-	}
-	label,p,b{
-		font-family: 'Noto Sans HK', sans-serif;
-		color: white;
-
-	}
-	.elements{
-		padding-top: 2px;
-
-	}
-
-</style>
-<body style="background-color:#3d0c02;">
-
-	<h1 style="font-size: 4rem; text-decoration-line: underline; text-decoration-thickness: auto;">University Admission </h1>
-	<h1 style="font-size: 4rem; text-decoration-line: underline; text-decoration-thickness: auto;">Eligibility Predictor</h1>
-	<br>
-	<br>
-	<p style="font-size: 2rem; font-family: 'Raleway', sans-serif;"> <strong> HERE YOU GO </strong></p>
-	<p style="font-size: 2rem; font-family: 'Raleway', sans-serif;">Enter your details ! Good luck : ) </p>
-
-
-	<form action="/predict" method="post" class="elements" style="font-size: 1rem;">
-		<p style="font-size: 1.7rem; font-family: 'Raleway', sans-serif;"> <strong> DETAILS </strong></p>
-		<p class="elements">GRE Score</p>
-		<p><input type="text" name="gre" value="Score range 0-340" style=" border-radius: 8px;"></p>
-		<p class="elements">TOEFL Score</p>
-		<p><input type="text" name="tofl" value="Score range 0-120" style=" border-radius: 8px;"></p>
-		<p class="elements"><label>University Rating</label> </p>
-		<select name="rating" style=" border-radius: 8px;">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-        </select>
-		<br>
-		<p class="elements">SOP</p>
-		<p><input type="text" name="sop" value="Score range 0-5" style=" border-radius: 8px;"></p>
-		<p class="elements">LOR</p>
-		<p><input type="text" name="lor" value="Score range 0-5" style=" border-radius: 8px;"></p>
-		<p class="elements">CGPA</p>
-		<p><input type="text" name="cgpa" value="Score range 0-10" style=" border-radius: 8px;"></p>
-		<p class="elements"><label>Research</label></p>
-		<select name="research" style=" border-radius: 8px;">
-			<option value="Yes">Yes</option>
-			<option value="No">No</option>
-        </select>
-
-        
-
-
-		<p class="elements"> <input type = "submit" value = "submit" style=" border-radius: 8px;"/> </p>
-	</form>
-
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>University Admission Predictor</h1>
+			<p>Enter your details to predict your admission chances</p>
+		</div>
+		<div class="form-container">
+			<form action="/predict" method="post">
+				<label for="gre">GRE Score</label>
+				<input type="text" id="gre" name="gre" placeholder="Score range 0-340">
+				<label for="tofl">TOEFL Score</label>
+				<input type="text" id="tofl" name="tofl" placeholder="Score range 0-120">
+				<label for="rating">University Rating</label>
+				<select id="rating" name="rating">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				<label for="sop">SOP</label>
+				<input type="text" id="sop" name="sop" placeholder="Score range 0-5">
+				<label for="lor">LOR</label>
+				<input type="text" id="lor" name="lor" placeholder="Score range 0-5">
+				<label for="cgpa">CGPA</label>
+				<input type="text" id="cgpa" name="cgpa" placeholder="Score range 0-10">
+				<label for="research">Research</label>
+				<select id="research" name="research">
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+				</select>
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+	</div>
 </body>
 </html>
